@@ -1,0 +1,16 @@
+html, body {
+    height: 100%
+}
+
+#app-base, .App {
+    height: 100%;
+}
+
+// Login Page Layout
+.App {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.75fr 7fr 0.5fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}

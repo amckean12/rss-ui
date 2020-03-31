@@ -1,13 +1,13 @@
+//Libraries
 import React from 'react';
 
-//Components
-
-
-function FormComponent() {
-  return (
-    <div className="form-container">
-    </div>
-  );
+const FormComponent = (props) => {
+    return(
+        <div className={`${props.block}__inner`}>
+            <h1 className={`${props.block}__${props.element}`}>{props.content}</h1> 
+        </div>
+    )
 }
 
-export default FormComponent;
+
+export default FormComponent

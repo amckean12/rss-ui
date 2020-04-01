@@ -24,4 +24,26 @@
         padding: 0 60px;
         width: 75%;
     }
+
+    .form {
+        &__button--primary {
+            color: white;
+            background-color: #5F42B1;
+            border-color: #5F42B1;
+            &:hover {
+                color: #5F42B1;
+                background-color: white;
+            }
+        }
+
+        &__button--secondary {
+            color: #5F42B1;
+            border-color: #5F42B1;
+            margin-left: 1rem;
+            &:hover {
+                color: white;
+                background-color: #5F42B1;
+            }
+        }
+    }
 }

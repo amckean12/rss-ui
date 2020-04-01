@@ -1,0 +1,22 @@
+.profile {
+    height: 100%;
+
+    &__overview-container {
+        background-color: #5F42B1;
+    }
+    &__overview-stat {
+        height: 200px;
+        margin: 1rem;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    &__rss-feed {
+        height: 100%;
+        margin: 1rem;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}

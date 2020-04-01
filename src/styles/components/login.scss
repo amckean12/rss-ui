@@ -1,5 +1,6 @@
 .login {
     height: 100%;
+    
     // Heading Component
     &__main-heading-container{
         background-color: #5F42B1;
@@ -18,4 +19,9 @@
     }
 
     // Form Side
+    .form-section {
+        margin-top: 18rem;
+        padding: 0 60px;
+        width: 75%;
+    }
 }

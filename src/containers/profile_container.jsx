@@ -28,6 +28,14 @@ class ProfileContainer extends Component {
                 <div className="col-md-9 col-sm-12 profile__rss-feed-container">
                     <div className="profile__rss-feed">
                         <div className="profile__rss-feed-toolbar">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order By</button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <button class="dropdown-item" type="button">Action</button>
+                                    <button class="dropdown-item" type="button">Another action</button>
+                                    <button class="dropdown-item" type="button">Something else here</button>
+                                </div>
+                            </div>
                         </div>
                     </div> 
                 </div> 

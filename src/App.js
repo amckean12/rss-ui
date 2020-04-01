@@ -8,6 +8,7 @@ import FooterContainer from './containers/footer_container.jsx'
 
 //Style Sheets
 import './app.scss'
+import './styles/utils/responsiveness.scss'
 
 function App() {
   return (

@@ -1,12 +1,13 @@
+// Libraries
 import React from 'react';
 
-//Containers
+// Containers
 import HeaderContainer from './containers/header_container.jsx'
 import MainContainer from './containers/main_container.jsx'
 import FooterContainer from './containers/footer_container.jsx'
 
 
-//Style Sheets
+// Style Sheets
 import './app.scss'
 import './styles/utils/responsiveness.scss'
 

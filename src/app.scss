@@ -1,16 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+
 html, body {
-    height: 100%
-}
-
-#app-base, .App {
     height: 100%;
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
 }
 
-// Login Page Layout
-.App {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.75fr 7fr 0.5fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+#app-base, .App, .main {
+    height: 100%;
 }

@@ -7,9 +7,13 @@ class ProfileContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          error: null,
-          isLoaded: false,
-          items: []
+            error: null,
+            isLoaded: false,
+            user: null,
+            article_count: null,
+            oldest_article: null,
+            newest_article: null,
+            article_history: null
         };
       }
 
@@ -42,7 +46,7 @@ class ProfileContainer extends Component {
                 <div className="col-md-3 col-sm-12 profile__overview-container">
                     <div className="profile__overview-stat profile__overview-stat--article-count">
                         <h3 className="profile__overview-stat-heading">Total Artices</h3>
-                        <p className="profile__overview-stat-value">10</p>
+                        <p className="profile__overview-stat-value">{this.state.article_count}</p>
                     </div>
                     <div className="profile__overview-stat profile__overview-stat--article-img-count">
                         <h3 className="profile__overview-stat-heading">Artices With Image</h3>

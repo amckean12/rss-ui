@@ -4,6 +4,38 @@ import React, { Component } from 'react';
 import '../styles/components/profile.scss'
 
 class ProfileContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          error: null,
+          isLoaded: false,
+          items: []
+        };
+      }
+
+      componentDidMount() {
+        fetch("http://localhost:3001/users/1")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({
+                isLoaded: true,
+                user: result.user_data,
+                article_count: result.article_count,
+                oldest_article: result.oldest_article,
+                newest_article: result.newest_article,
+                article_history: result.article_history
+              });
+            },
+            (error) => {
+              this.setState({
+                isLoaded: true,
+                error
+              });
+            }
+          )
+      }
+
     render(){
         return(
             <section className="profile row">

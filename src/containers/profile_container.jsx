@@ -14,6 +14,7 @@ class ProfileContainer extends Component {
             isLoaded: false,
             user: "",
             article_count: "",
+            article_count_img: "",
             oldest_article: "",
             newest_article: "",
             article_history: [
@@ -40,6 +41,7 @@ class ProfileContainer extends Component {
                         isLoaded: true,
                         user: result.user_data,
                         article_count: result.article_count,
+                        article_count_img: result.article_count_img,
                         oldest_article: result.oldest_article,
                         newest_article: result.newest_article,
                         article_history: result.article_history
@@ -75,7 +77,7 @@ class ProfileContainer extends Component {
                     </div>
                     <div className="profile__overview-stat profile__overview-stat--article-img-count">
                         <h3 className="profile__overview-stat-heading">Artices With Image</h3>
-                        <p className="profile__overview-stat-value">5</p>
+                        <p className="profile__overview-stat-value">{this.state.article_count_img}</p>
                     </div>
                     <div className="profile__overview-stat profile__overview-stat--oldest-article">
                         <h3 className="profile__overview-stat-heading">Oldest Article</h3>

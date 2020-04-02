@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 // Stylesheets
 import '../styles/components/profile.scss'
 
+// Components
+import StoryComponent from '../components/story_component.jsx'
+
 class ProfileContainer extends Component {
     constructor(props) {
         super(props);
@@ -13,32 +16,54 @@ class ProfileContainer extends Component {
             article_count: "",
             oldest_article: "",
             newest_article: "",
-            article_history: "",
+            article_history: [
+                {
+                    id: 1,
+                    title: "This is Article",
+                    article_link: "https://www.google.com/",
+                    published_date: "2020-03-30T16:10:00.000Z",
+                    description: "sed do eiusmod tempor incididunt",
+                    image: true,
+                    img_src: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iUqQrbWEDNrc/v0/800x600.jpg",
+                    img_alt: "Health Image", 
+                }
+            ]
         };
-      }
+    }
 
-      componentDidMount() {
+    componentDidMount() {
         fetch("http://localhost:3001/users/1")
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({
-                isLoaded: true,
-                user: result.user_data,
-                article_count: result.article_count,
-                oldest_article: result.oldest_article,
-                newest_article: result.newest_article,
-                article_history: result.article_history
-              });
-            },
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        user: result.user_data,
+                        article_count: result.article_count,
+                        oldest_article: result.oldest_article,
+                        newest_article: result.newest_article,
+                        article_history: result.article_history
+                    });
+                },
             (error) => {
-              this.setState({
-                isLoaded: true,
-                error
-              });
+                this.setState({
+                    isLoaded: true,
+                    error
+                });
             }
-          )
-      }
+        )
+    }
+
+    componentDidUpdate() {
+        return(this.renderStories())
+    }
+
+    renderStories() {
+        return this.state.article_history.map( story => {
+            return(<StoryComponent block="profile" story={story}/>)
+        })
+    }
+    
 
     render(){
         return(
@@ -74,12 +99,7 @@ class ProfileContainer extends Component {
                             </div>
                         </div>
                         <div className="profile__rss-feed-list">
-                            <div className="profile__story-container">
-                                <h3 className="profile__story-title">
-                                    <a className="profile__story-link">
-                                    </a>
-                                </h3>
-                            </div>
+                            {this.componentDidUpdate()}
                         </div>
                     </div> 
                 </div> 

@@ -9,11 +9,11 @@ class ProfileContainer extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            user: null,
-            article_count: null,
-            oldest_article: null,
-            newest_article: null,
-            article_history: null
+            user: "",
+            article_count: "",
+            oldest_article: "",
+            newest_article: "",
+            article_history: "",
         };
       }
 
@@ -54,11 +54,11 @@ class ProfileContainer extends Component {
                     </div>
                     <div className="profile__overview-stat profile__overview-stat--oldest-article">
                         <h3 className="profile__overview-stat-heading">Oldest Article</h3>
-                        <p className="profile__overview-stat-value">Oldest Article</p>
+                        <p className="profile__overview-stat-value">{this.state.oldest_article.title}</p>
                     </div>
                     <div className="profile__overview-stat profile__overview-stat--newest-article">
                         <h3 className="profile__overview-stat-heading">Newest Article</h3>
-                        <p className="profile__overview-stat-value">Oldest Article</p>
+                        <p className="profile__overview-stat-value">{this.state.newest_article.title}</p>
                     </div>
                 </div> 
                 <div className="col-md-9 col-sm-12 profile__rss-feed-container">
@@ -71,6 +71,14 @@ class ProfileContainer extends Component {
                                     <button class="dropdown-item" type="button">Another action</button>
                                     <button class="dropdown-item" type="button">Something else here</button>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="profile__rss-feed-list">
+                            <div className="profile__story-container">
+                                <h3 className="profile__story-title">
+                                    <a className="profile__story-link">
+                                    </a>
+                                </h3>
                             </div>
                         </div>
                     </div> 

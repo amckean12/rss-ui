@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 //Components
 import FormComponent from '../components/form_component.jsx'
-import HeadingComponent from '../components/heading_component.jsx'
 
 // StyleSheets
 import '../styles/components/login.scss'

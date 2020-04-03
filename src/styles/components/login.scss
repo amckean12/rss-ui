@@ -3,11 +3,13 @@
     
     // Heading Component
     &__main-heading-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         background-color: #5F42B1;
     }
     &__main-heading {
-        margin-top: 20rem;
-        padding: 0 60px;
+        width: 20rem;
     }
     &__heading-1 {
         color: white;
@@ -18,11 +20,15 @@
         font-size: 1rem;
     }
 
+    &__main-form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     // Form Side
     .form-section {
-        margin-top: 18rem;
-        padding: 0 60px;
-        width: 75%;
+        width: 18.75rem;
     }
 
     .form {

@@ -11,7 +11,7 @@ class LoginContainer extends Component {
         return(
             <section className="login row">
                 <div className="col-md-6 col-sm-12 login__main-heading-container">
-                    <div className="login__main-heading">
+                    <div className="mx-auto login__main-heading">
                         <h1 className="login__heading-1">RSS Application Login Page</h1>
                         <h2 className="login__heading-2">Login or register from here to access.</h2>
                     </div>

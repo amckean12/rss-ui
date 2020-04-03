@@ -3,7 +3,7 @@ import React from 'react';
 
 const FormComponent = (props) => {
     return(
-        <section className="form-section">
+        <section className="mx-auto form-section">
             <form className="form">
                 <div class="form-group form__input-group">
                     <label>User Name</label>

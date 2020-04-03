@@ -12,7 +12,6 @@ class ProfileContainer extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            order_type: 'title',
             user: "",
             article_count: "",
             article_count_img: "",
@@ -57,53 +56,38 @@ class ProfileContainer extends Component {
         )
     }
 
-    componentDidUpdate() {
-        return(this.renderStories())
-    }
-
     renderStories() {
         return this.state.article_history.map( story => {
             return(<StoryComponent block="profile" story={story}/>)
         })
     }
 
-    changeOrderType(order_type) {
-        if (order_type === 'title'){
-            this.setState({
-                order_type: 'title'
+    sortStoriesArray(order_type){
+        let sorted_stories = ""
+        if(order_type === 'date'){
+            sorted_stories = this.state.article_history.sort((a, b) => {
+                if(a.date < b.date) { return -1; }
+                if(a.date > b.date) { return 1; }
+                return 0;
             })
-        } else if (order_type === 'date') {
-            this.setState({
-                order_type: 'date'
-            })
-        } else {
-            this.setState({
-                order_type: 'description'
-            })
-        }
-        this.sortStoriesArray()
-    }
-
-    sortStoriesArray(){
-        if(this.state.order_type === 'date'){
-            let sorted_stories = this.state.article_history.sort((a, b) => b.published_date - a.published_date)
-            this.setState({
-                article_history: sorted_stories
-            })
-            console.log(sorted_stories)
-        } else if (this.state.order_type === 'title') {
-            let sorted_stories = this.state.article_history.sort(
-                (a, b) => {
+        } else if (order_type === 'title') {
+            sorted_stories = this.state.article_history.sort((a, b) => {
                     if(a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
                     if(a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
                     return 0;
                 })
-            this.setState({
-                article_history: sorted_stories
+        } else if (order_type === 'description') {
+            sorted_stories = this.state.article_history.sort((a, b) => {
+                if(a.description.toLowerCase() < b.description.toLowerCase()) { return -1; }
+                if(a.description.toLowerCase() > b.description.toLowerCase()) { return 1; }
+                return 0;
             })
-            console.log(sorted_stories)
+        } else {
+            return
         }
-        this.renderStories()
+        this.setState({
+            article_history: sorted_stories
+        })
     }
 
     
@@ -134,14 +118,14 @@ class ProfileContainer extends Component {
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" type="button" onClick={() => this.changeOrderType('title')}>Title</button>
-                                    <button class="dropdown-item" type="button" onClick={() => this.changeOrderType('date')}>Published Date</button>
-                                    <button class="dropdown-item" type="button" onClick={() => this.changeOrderType('description')}>Description</button>
+                                    <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('title')}>Title</button>
+                                    <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('date')}>Published Date</button>
+                                    <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('description')}>Description</button>
                                 </div>
                             </div>
                         </div>
                         <div className="profile__rss-feed-list">
-                            { this.componentDidUpdate() }
+                            { this.renderStories() }
                         </div>
                     </div> 
                 </div> 

@@ -62,13 +62,12 @@ class ProfileContainer extends Component {
         })
     }
 
+    // Sorts stories based on arguement given from onClick event
     sortStoriesArray(order_type){
         let sorted_stories = ""
         if(order_type === 'date'){
             sorted_stories = this.state.article_history.sort((a, b) => {
-                if(a.date < b.date) { return -1; }
-                if(a.date > b.date) { return 1; }
-                return 0;
+                //Still Doesnt Work
             })
         } else if (order_type === 'title') {
             sorted_stories = this.state.article_history.sort((a, b) => {

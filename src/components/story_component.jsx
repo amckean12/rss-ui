@@ -2,7 +2,6 @@
 import React from 'react';
 
 const StoryComponent = (props) => {
-    let date = Date.parse(props.story.published_date);
     return(
         <section className={`${props.block}__story-section`}>
             {props.image && 
@@ -14,7 +13,7 @@ const StoryComponent = (props) => {
                 </a>
             </h3>
             <p className={`${props.block}__story-published-date`}>
-                {date}
+                { props.story.display_date }
             </p>
             <p className={`${props.block}__story-description`}>
                 {props.story.description}

@@ -28,6 +28,7 @@ class ProfileContainer extends Component {
                     image: true,
                     img_src: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iUqQrbWEDNrc/v0/800x600.jpg",
                     img_alt: "Health Image", 
+                    display_date: '',
                 }
             ]
         };
@@ -68,7 +69,9 @@ class ProfileContainer extends Component {
         let sorted_stories = ""
         if(order_type === 'date'){
             sorted_stories = this.state.article_history.sort((a, b) => {
-                //Still Doesnt Work
+                if(a.display_date < b.display_date) { return -1; }
+                if(a.display_date > b.display_date) { return 1; }
+                return 0;
             })
         } else if (order_type === 'title') {
             sorted_stories = this.state.article_history.sort((a, b) => {
@@ -89,8 +92,7 @@ class ProfileContainer extends Component {
             article_history: sorted_stories
         })
     }
-
-    
+ 
     render(){
         return(
             <section className="profile row">
@@ -109,12 +111,12 @@ class ProfileContainer extends Component {
                         element={'article-count'}
                         title={'Earliest Published Date'}
                         modifier={'aqua'}
-                        content={this.state.oldest_article.published_date} />
+                        content={this.state.oldest_article.display_date} />
                     <OverviewStatComponent 
                         element={'article-count'}
                         title={'Latest Published Date'}
                         modifier={'dark-blue'}
-                        content={this.state.newest_article.published_date} />
+                        content={this.state.newest_article.display_date} />
                 </div> 
                 <div className="col-md-9 col-sm-12 profile__rss-feed-container">
                     <div className="profile__rss-feed">

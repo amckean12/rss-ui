@@ -45,7 +45,7 @@ class ProfileContainer extends Component {
                         article_count_img: result.article_count_img,
                         oldest_article: result.oldest_article,
                         newest_article: result.newest_article,
-                        article_history: result.article_history
+                        article_history: result.article_history,
                     });
                 },
             (error) => {
@@ -81,9 +81,32 @@ class ProfileContainer extends Component {
                 order_type: 'description'
             })
         }
+        this.sortStoriesArray()
     }
-    
 
+    sortStoriesArray(){
+        if(this.state.order_type === 'date'){
+            let sorted_stories = this.state.article_history.sort((a, b) => b.published_date - a.published_date)
+            this.setState({
+                article_history: sorted_stories
+            })
+            console.log(sorted_stories)
+        } else if (this.state.order_type === 'title') {
+            let sorted_stories = this.state.article_history.sort(
+                (a, b) => {
+                    if(a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
+                    if(a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
+                    return 0;
+                })
+            this.setState({
+                article_history: sorted_stories
+            })
+            console.log(sorted_stories)
+        }
+        this.renderStories()
+    }
+
+    
     render(){
         return(
             <section className="profile row">

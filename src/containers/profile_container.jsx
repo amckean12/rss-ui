@@ -92,11 +92,11 @@ class ProfileContainer extends Component {
                     <div className="profile__rss-feed">
                         <div className="profile__rss-feed-toolbar">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order By</button>
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
+                                    <button class="dropdown-item" type="button">Title</button>
+                                    <button class="dropdown-item" type="button">Published Date</button>
+                                    <button class="dropdown-item" type="button">Description</button>
                                 </div>
                             </div>
                         </div>

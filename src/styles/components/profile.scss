@@ -42,8 +42,27 @@
         border-bottom: 1px solid #888A8C;
     }
 
+    &__rss-toolbar-sort-button {
+        background-color: white;
+        color: #888A8C;
+    }
+
     &__story-section {
         border-bottom: 1px solid #888A8C; 
         padding: 1rem;
+    }
+    &__story-title {
+        font-size: 1.25rem;
+    }
+
+    &__story-published-date {
+        color: #888A8C;
+    }
+    &__story-link {
+        color: #000;
+        text-decoration: none;
+    }
+    &__story-description {
+        color: #888A8C;
     }
 }

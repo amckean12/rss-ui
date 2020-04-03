@@ -5,6 +5,7 @@ import '../styles/components/profile.scss'
 
 // Components
 import StoryComponent from '../components/story_component.jsx'
+import OverviewStatComponent from '../components/overview-stat_component.jsx'
 
 class ProfileContainer extends Component {
     constructor(props) {
@@ -44,7 +45,7 @@ class ProfileContainer extends Component {
                         article_count_img: result.article_count_img,
                         oldest_article: result.oldest_article,
                         newest_article: result.newest_article,
-                        article_history: result.article_history
+                        article_history: result.article_history,
                     });
                 },
             (error) => {
@@ -56,52 +57,75 @@ class ProfileContainer extends Component {
         )
     }
 
-    componentDidUpdate() {
-        return(this.renderStories())
-    }
-
     renderStories() {
         return this.state.article_history.map( story => {
             return(<StoryComponent block="profile" story={story}/>)
         })
     }
-    
 
+    // Sorts stories based on arguement given from onClick event
+    sortStoriesArray(order_type){
+        let sorted_stories = ""
+        if(order_type === 'date'){
+            sorted_stories = this.state.article_history.sort((a, b) => {
+                //Still Doesnt Work
+            })
+        } else if (order_type === 'title') {
+            sorted_stories = this.state.article_history.sort((a, b) => {
+                    if(a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
+                    if(a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
+                    return 0;
+                })
+        } else if (order_type === 'description') {
+            sorted_stories = this.state.article_history.sort((a, b) => {
+                if(a.description.toLowerCase() < b.description.toLowerCase()) { return -1; }
+                if(a.description.toLowerCase() > b.description.toLowerCase()) { return 1; }
+                return 0;
+            })
+        } else {
+            return
+        }
+        this.setState({
+            article_history: sorted_stories
+        })
+    }
+
+    
     render(){
         return(
             <section className="profile row">
                 <div className="col-md-3 col-sm-12 profile__overview-container">
-                    <div className="profile__overview-stat profile__overview-stat--article-count">
-                        <h3 className="profile__overview-stat-heading">Total Artices</h3>
-                        <p className="profile__overview-stat-value">{this.state.article_count}</p>
-                    </div>
-                    <div className="profile__overview-stat profile__overview-stat--article-img-count">
-                        <h3 className="profile__overview-stat-heading">Artices With Image</h3>
-                        <p className="profile__overview-stat-value">{this.state.article_count_img}</p>
-                    </div>
-                    <div className="profile__overview-stat profile__overview-stat--oldest-article">
-                        <h3 className="profile__overview-stat-heading">Oldest Article</h3>
-                        <p className="profile__overview-stat-value">{this.state.oldest_article.title}</p>
-                    </div>
-                    <div className="profile__overview-stat profile__overview-stat--newest-article">
-                        <h3 className="profile__overview-stat-heading">Newest Article</h3>
-                        <p className="profile__overview-stat-value">{this.state.newest_article.title}</p>
-                    </div>
+                    <OverviewStatComponent 
+                        element={'article-count'}
+                        title={'Newest Article'}
+                        content={this.state.article_count}/>
+                    <OverviewStatComponent 
+                        element={'article-count'}
+                        title={'Newest Article'}
+                        content={this.state.article_count_img}/>
+                    <OverviewStatComponent 
+                        element={'article-count'}
+                        title={'Newest Article'}
+                        content={this.state.oldest_article.title}/>
+                    <OverviewStatComponent 
+                        element={'article-count'}
+                        title={'Newest Article'}
+                        content={this.state.newest_article.title}/>
                 </div> 
                 <div className="col-md-9 col-sm-12 profile__rss-feed-container">
                     <div className="profile__rss-feed">
                         <div className="profile__rss-feed-toolbar">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
+                                <button type="button" class="btn dropdown-toggle profile__rss-toolbar-sort-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" type="button">Title</button>
-                                    <button class="dropdown-item" type="button">Published Date</button>
-                                    <button class="dropdown-item" type="button">Description</button>
+                                    <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('title')}>Title</button>
+                                    <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('date')}>Published Date</button>
+                                    <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('description')}>Description</button>
                                 </div>
                             </div>
                         </div>
                         <div className="profile__rss-feed-list">
-                            {this.componentDidUpdate()}
+                            { this.renderStories() }
                         </div>
                     </div> 
                 </div> 

@@ -12,6 +12,7 @@ class ProfileContainer extends Component {
         this.state = {
             error: null,
             isLoaded: false,
+            order_type: 'title',
             user: "",
             article_count: "",
             article_count_img: "",
@@ -65,6 +66,22 @@ class ProfileContainer extends Component {
             return(<StoryComponent block="profile" story={story}/>)
         })
     }
+
+    changeOrderType(order_type) {
+        if (order_type === 'title'){
+            this.setState({
+                order_type: 'title'
+            })
+        } else if (order_type === 'date') {
+            this.setState({
+                order_type: 'date'
+            })
+        } else {
+            this.setState({
+                order_type: 'description'
+            })
+        }
+    }
     
 
     render(){
@@ -94,14 +111,14 @@ class ProfileContainer extends Component {
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" type="button">Title</button>
-                                    <button class="dropdown-item" type="button">Published Date</button>
-                                    <button class="dropdown-item" type="button">Description</button>
+                                    <button class="dropdown-item" type="button" onClick={() => this.changeOrderType('title')}>Title</button>
+                                    <button class="dropdown-item" type="button" onClick={() => this.changeOrderType('date')}>Published Date</button>
+                                    <button class="dropdown-item" type="button" onClick={() => this.changeOrderType('description')}>Description</button>
                                 </div>
                             </div>
                         </div>
                         <div className="profile__rss-feed-list">
-                            {this.componentDidUpdate()}
+                            { this.componentDidUpdate() }
                         </div>
                     </div> 
                 </div> 

@@ -94,11 +94,11 @@ class ProfileContainer extends Component {
     render(){
         return(
             <section className="profile row">
-                <div className="col-md-3 col-sm-12 profile__overview-container">
+                <div className="col-md-3 col-sm-12 pr-md-0 profile__overview-container">
                     <OverviewStatComponent 
                         element={'article-count'}
                         title={'Total Articles'}
-                        modifier={'green'}
+                        modifier={'orange'}
                         content={this.state.article_count} />
                     <OverviewStatComponent 
                         element={'article-count'}
@@ -107,14 +107,14 @@ class ProfileContainer extends Component {
                         content={this.state.article_count_img} />
                     <OverviewStatComponent 
                         element={'article-count'}
-                        title={'Oldest Article'}
-                        modifier={'default'}
-                        content={this.state.oldest_article.title} />
+                        title={'Earliest Published Date'}
+                        modifier={'aqua'}
+                        content={this.state.oldest_article.published_date} />
                     <OverviewStatComponent 
                         element={'article-count'}
-                        title={'Newest Article'}
-                        modifier={'default'}
-                        content={this.state.newest_article.title} />
+                        title={'Latest Published Date'}
+                        modifier={'dark-blue'}
+                        content={this.state.newest_article.published_date} />
                 </div> 
                 <div className="col-md-9 col-sm-12 profile__rss-feed-container">
                     <div className="profile__rss-feed">

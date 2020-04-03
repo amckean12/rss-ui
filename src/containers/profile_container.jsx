@@ -97,20 +97,24 @@ class ProfileContainer extends Component {
                 <div className="col-md-3 col-sm-12 profile__overview-container">
                     <OverviewStatComponent 
                         element={'article-count'}
-                        title={'Newest Article'}
-                        content={this.state.article_count}/>
+                        title={'Total Articles'}
+                        modifier={'green'}
+                        content={this.state.article_count} />
+                    <OverviewStatComponent 
+                        element={'article-count'}
+                        title={'Total Articles Img'}
+                        modifier={'light-blue'}
+                        content={this.state.article_count_img} />
+                    <OverviewStatComponent 
+                        element={'article-count'}
+                        title={'Oldest Article'}
+                        modifier={'default'}
+                        content={this.state.oldest_article.title} />
                     <OverviewStatComponent 
                         element={'article-count'}
                         title={'Newest Article'}
-                        content={this.state.article_count_img}/>
-                    <OverviewStatComponent 
-                        element={'article-count'}
-                        title={'Newest Article'}
-                        content={this.state.oldest_article.title}/>
-                    <OverviewStatComponent 
-                        element={'article-count'}
-                        title={'Newest Article'}
-                        content={this.state.newest_article.title}/>
+                        modifier={'default'}
+                        content={this.state.newest_article.title} />
                 </div> 
                 <div className="col-md-9 col-sm-12 profile__rss-feed-container">
                     <div className="profile__rss-feed">

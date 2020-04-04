@@ -6,7 +6,7 @@ import '../styles/components/header.scss'
 class HeaderContainer extends Component {
     render(){
         return(
-            <header className="navbar header">
+            <header className="navbar fixed-top header">
                 <div className="container">
                     <section className="header__logo">
                         <div className="header__logo-wrapper">

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import '../styles/components/profile.scss'
 
 // Components
+import HeaderComponent from '../components/header_component.jsx'
 import StoryComponent from '../components/story_component.jsx'
 import OverviewStatComponent from '../components/overview-stat_component.jsx'
 
@@ -96,45 +97,54 @@ class ProfileContainer extends Component {
     render(){
         return(
             <section className="profile row">
-                <div className="col-md-3 col-sm-12 pr-md-0 profile__overview-container">
-                    <OverviewStatComponent 
-                        element={'article-count'}
-                        title={'Total Articles'}
-                        modifier={'orange'}
-                        content={this.state.article_count} />
-                    <OverviewStatComponent 
-                        element={'article-count'}
-                        title={'Total Articles Img'}
-                        modifier={'light-blue'}
-                        content={this.state.article_count_img} />
-                    <OverviewStatComponent 
-                        element={'article-count'}
-                        title={'Earliest Published Date'}
-                        modifier={'aqua'}
-                        content={this.state.oldest_article.display_date} />
-                    <OverviewStatComponent 
-                        element={'article-count'}
-                        title={'Latest Published Date'}
-                        modifier={'dark-blue'}
-                        content={this.state.newest_article.display_date} />
-                </div> 
-                <div className="col-md-9 col-sm-12 profile__rss-feed-container">
-                    <div className="profile__rss-feed">
-                        <div className="profile__rss-feed-toolbar">
-                            <div class="btn-group">
-                                <button type="button" class="btn dropdown-toggle profile__rss-toolbar-sort-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('title')}>Title</button>
-                                    <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('date')}>Published Date</button>
-                                    <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('description')}>Description</button>
+                <div className="col-12">
+                    <div className="row">
+                        <HeaderComponent
+                            content={this.state.user} 
+                        />
+                    </div>
+                    <div className="row">
+                        <div className="col-md-3 col-sm-12 pr-md-0 profile__overview-container">
+                            <OverviewStatComponent 
+                                element={'article-count'}
+                                title={'Total Articles'}
+                                modifier={'orange'}
+                                content={this.state.article_count} />
+                            <OverviewStatComponent 
+                                element={'article-count'}
+                                title={'Total Articles Img'}
+                                modifier={'light-blue'}
+                                content={this.state.article_count_img} />
+                            <OverviewStatComponent 
+                                element={'article-count'}
+                                title={'Earliest Published Date'}
+                                modifier={'aqua'}
+                                content={this.state.oldest_article.display_date} />
+                            <OverviewStatComponent 
+                                element={'article-count'}
+                                title={'Latest Published Date'}
+                                modifier={'dark-blue'}
+                                content={this.state.newest_article.display_date} />
+                        </div>
+                        <div className="col-md-9 col-sm-12 profile__rss-feed-container">
+                            <div className="profile__rss-feed">
+                                <div className="profile__rss-feed-toolbar">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn dropdown-toggle profile__rss-toolbar-sort-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('title')}>Title</button>
+                                            <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('date')}>Published Date</button>
+                                            <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('description')}>Description</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="profile__rss-feed-list">
-                            { this.renderStories() }
-                        </div>
-                    </div> 
-                </div> 
+                                <div className="profile__rss-feed-list">
+                                    { this.renderStories() }
+                                </div>
+                            </div> 
+                        </div>  
+                    </div>
+                </div>
             </section>
         );
     }

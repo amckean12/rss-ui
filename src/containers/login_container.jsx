@@ -7,6 +7,25 @@ import FormComponent from '../components/form_component.jsx'
 import '../styles/components/login.scss'
 
 class LoginContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            password: "",
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event){
+        this.setState({
+            [event.target.name]: event.target.value
+          });
+    }
+
+    sendRequest(){
+
+    }
+
     render(){
         return(
             <section className="login row">
@@ -17,7 +36,9 @@ class LoginContainer extends Component {
                     </div>
                 </div>
                 <div className="col-md-6 col-sm-12 login__main-form-container">
-                    <FormComponent />
+                    <FormComponent 
+                        handleChange={this.handleChange}
+                    />
                 </div>
             </section>
         );

@@ -7,7 +7,7 @@ import ProfileContainer from './profile_container.jsx'
 class MainContainer extends Component {
     render(){
         return(
-            <main className="main">
+            <main className="main container-fluid">
                 <LoginContainer />
                 <ProfileContainer />
             </main>

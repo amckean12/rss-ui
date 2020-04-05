@@ -96,13 +96,7 @@ class ProfileContainer extends Component {
  
     render(){
         return(
-            <section className="profile row">
-                <div className="col-12">
-                    <div className="row">
-                        <HeaderComponent
-                            content={this.state.user} 
-                        />
-                    </div>
+            <section className="profile container">
                     <div className="row">
                         <div className="col-md-3 col-sm-12 pr-md-0 profile__overview-container">
                             <OverviewStatComponent 
@@ -144,7 +138,6 @@ class ProfileContainer extends Component {
                             </div> 
                         </div>  
                     </div>
-                </div>
             </section>
         );
     }

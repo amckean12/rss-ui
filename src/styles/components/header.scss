@@ -1,0 +1,15 @@
+.header {
+    background-color: #5F42B1;
+    height: 3.5rem;
+    color: white;
+
+    &__logo {
+        font-size: 1.5rem;
+    }
+    &__logo-wrapper {
+        border: 2px solid white;
+    }
+    &__logo-content {
+        padding: 7px;
+    }
+}

@@ -7,6 +7,8 @@ import ProfileContainer from './profile_container.jsx';
 //Components
 import HeaderComponent from '../components/header_component.jsx';
 
+// Style 
+
 class MainContainer extends Component {
     constructor(props) {
         super(props);
@@ -51,7 +53,7 @@ class MainContainer extends Component {
     }
     render(){
         return(
-            <div className="container-fluid">
+            <div className="container-fluid px-0 home">
                 <HeaderComponent 
                     user={this.state.user}
                 />

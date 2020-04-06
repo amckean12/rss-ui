@@ -9,7 +9,6 @@ class MainContainer extends Component {
         return(
             <main className="main container-fluid">
                 <LoginContainer />
-                <ProfileContainer />
             </main>
         );
     }

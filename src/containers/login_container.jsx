@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 //Components
 import FormComponent from '../components/form_component.jsx'
@@ -12,16 +13,20 @@ class LoginContainer extends Component {
         this.state = {
             form_type: "Login",
             form_route: "New User?",
-            login_credentials: {
-                auth: {
-                    email: "",
-                    password: "",
-                }
-            }
+            username: '',
+            password: '',
+            password_confirmation: ''
         };
         this.renderFormType = this.renderFormType.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleLogin = this.handleLogin.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event){
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     }
 
     handleSubmit(event){
@@ -29,17 +34,33 @@ class LoginContainer extends Component {
 
         if(this.state.form_type === "Login"){
             this.handleLogin()
+        } else {
+            this.handleSignup()
         }
     }
 
     handleLogin(){
-        this.setState({
-            login_credentials: {
-                auth: {
-                    email: document.getElementById("emailInput").value,
-                    password: document.getElementById("passwordInput").value
-                }
+        axios.get('http://localhost:3001/find_user', {
+            params: {
+                password: this.state.password,
+                username: this.state.username
             }
+        })
+        .then(function(response){
+            console.log(response)
+        })
+    }
+
+    handleSignup(){
+        axios.post('http://localhost:3001/new_user', {
+            user: {
+                password: this.state.password,
+                password_confirmation: this.state.password_confirmation,
+                username: this.state.username
+            }
+        })
+        .then(function(response){
+            console.log(response)
         })
     }
 

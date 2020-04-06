@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { Component } from 'react';
 
 // Containers
 import MainContainer from './containers/main_container.jsx'
@@ -9,12 +9,14 @@ import MainContainer from './containers/main_container.jsx'
 import './app.scss'
 import './styles/utils/responsiveness.scss'
 
-function App() {
-  return (
-    <div className="App">
-      <MainContainer />
-    </div>
-  );
+class App extends Component {
+  render(){
+    return (
+      <div className="App">
+        <MainContainer />
+      </div>
+    );
+  }
 }
 
 export default App;

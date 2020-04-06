@@ -88,18 +88,20 @@ class LoginContainer extends Component {
         return(
             <section className="login row">
                 <div className="col-md-6 col-sm-12 login__main-heading-container">
-                    <div className="mx-auto login__main-heading">
+                    <div className="mx-auto login__heading-wrapper">
                         <h1 className="login__heading-1">RSS Application Login Page</h1>
                         <h2 className="login__heading-2">Login or register from here to access.</h2>
                     </div>
                 </div>
                 <div className="col-md-6 col-sm-12 login__main-form-container">
-                    <FormComponent
-                        handleSubmit={this.handleSubmit}
-                        handleChange={this.handleChange}
-                        formType={this.state.form_type} 
-                    />
-                    <button class="btn btn-link" onClick={this.renderFormType}>{this.state.form_route}</button> 
+                    <div className="login__form-wrapper">
+                        <FormComponent
+                            handleSubmit={this.handleSubmit}
+                            handleChange={this.handleChange}
+                            formType={this.state.form_type} 
+                        />
+                        <button class="btn btn-link" onClick={this.renderFormType}>{this.state.form_route}</button> 
+                    </div>
                 </div>
             </section>
         );

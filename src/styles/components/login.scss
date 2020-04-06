@@ -1,23 +1,24 @@
+@import '../utils/fonts.scss';
+
 .login {
     height: 100%;
     
-    // Heading Component
     &__main-heading-container{
         display: flex;
         flex-direction: column;
         justify-content: center;
         background-color: #5F42B1;
     }
-    &__main-heading {
+    &__heading-wrapper {
         width: 20rem;
     }
     &__heading-1 {
+        @include font-heading-1;
         color: white;
-        font-size: 2rem;
     }
     &__heading-2 {
+        @include font-heading-2;
         color: white;
-        font-size: 1rem;
     }
 
     &__main-form-container {
@@ -26,30 +27,8 @@
         justify-content: center;
     }
 
-    // Form Side
-    .form-section {
+    &__form-wrapper {
         width: 18.75rem;
-    }
-
-    .form {
-        &__button--primary {
-            color: white;
-            background-color: #5F42B1;
-            border-color: #5F42B1;
-            &:hover {
-                color: #5F42B1;
-                background-color: white;
-            }
-        }
-
-        &__button--secondary {
-            color: #5F42B1;
-            border-color: #5F42B1;
-            margin-left: 1rem;
-            &:hover {
-                color: white;
-                background-color: #5F42B1;
-            }
-        }
+        margin: auto;
     }
 }

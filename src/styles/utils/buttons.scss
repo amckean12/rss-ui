@@ -1,0 +1,9 @@
+@mixin primary_button {
+    color: white;
+    background-color: #5F42B1;
+    border-color: #5F42B1;
+    &:hover {
+        color: #5F42B1;
+        background-color: white;
+    }
+}

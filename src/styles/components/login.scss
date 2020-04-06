@@ -9,13 +9,16 @@
         justify-content: center;
         background-color: #5F42B1;
     }
+    
     &__heading-wrapper {
         width: 20rem;
     }
+
     &__heading-1 {
         @include font-heading-1;
         color: white;
     }
+
     &__heading-2 {
         @include font-heading-2;
         color: white;

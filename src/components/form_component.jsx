@@ -6,7 +6,7 @@ import '../styles/components/form.scss'
 
 const FormComponent = (props) => {
     return(
-        <section className="mx-auto form-section">
+        <section className="form-section">
             <form className="form" onSubmit={props.handleSubmit}>
                 <div class="form-group form__input-group">
                     <label className="form__label">Username</label>
@@ -22,7 +22,7 @@ const FormComponent = (props) => {
                     <input id="passwordInputConfirmation" type="password" class="form-control form__input" placeholder="Password" name="password_confirmation" onChange={props.handleChange}/>
                 </div> : ""
                 }
-                <button type="submit" class="btn form__submit-button--primary">{props.formType}</button>
+                <button type="submit" class="form__submit-button--primary">{props.formType}</button>
             </form>
         </section>
     )

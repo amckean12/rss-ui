@@ -46,6 +46,7 @@ class LoginContainer extends Component {
         })
         .then(response => {
             this.props.handleLogin(response.data)
+            localStorage.setItem('username', response.data.user_data.username);
             this.handleRedirect()
         })
     }

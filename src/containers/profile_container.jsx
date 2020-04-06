@@ -9,20 +9,6 @@ import StoryComponent from '../components/story_component.jsx'
 import OverviewStatComponent from '../components/overview-stat_component.jsx'
 
 class ProfileContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            error: null,
-            isLoaded: false,
-            user: this.props.user,
-            article_count: this.props.article_count,
-            article_count_img: this.props.article_count_img,
-            oldest_article: this.props.oldest_article,
-            newest_article: this.props.newest_article,
-            article_history: this.props.article_history,
-        };
-    }
-
     renderStories() {
         return this.props.data.article_history.map( story => {
             return(<StoryComponent block="profile" story={story}/>)

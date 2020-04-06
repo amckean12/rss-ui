@@ -53,7 +53,7 @@ class MainContainer extends Component {
     }
     render(){
         return(
-            <div className="px-0 home">
+            <div className="home">
                 <HeaderComponent 
                     user={this.state.user}
                 />

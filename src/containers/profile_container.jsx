@@ -1,12 +1,12 @@
+// Libraries
 import React, { Component } from 'react';
+
+// Components
+import StoryComponent from '../components/story_component.jsx'
+import OverviewStatComponent from '../components/overview-stat_component.jsx'
 
 // Stylesheets
 import '../styles/components/profile.scss'
-
-// Components
-import HeaderComponent from '../components/header_component.jsx'
-import StoryComponent from '../components/story_component.jsx'
-import OverviewStatComponent from '../components/overview-stat_component.jsx'
 
 class ProfileContainer extends Component {
     renderStories() {
@@ -46,7 +46,7 @@ class ProfileContainer extends Component {
  
     render(){
         return(
-            <section className="profile container">
+            <main className="container profile">
                     <div className="row">
                         <div className="col-md-3 col-sm-12 pr-md-0 profile__overview-container">
                             <OverviewStatComponent 
@@ -88,7 +88,7 @@ class ProfileContainer extends Component {
                             </div> 
                         </div>  
                     </div>
-            </section>
+            </main>
         );
     }
 }

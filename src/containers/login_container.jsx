@@ -85,23 +85,25 @@ class LoginContainer extends Component {
 
     render(){
         return(
-            <section className="login row">
-                <div className="col-md-6 col-sm-12 login__main-heading-container">
-                    <div className="mx-auto login__heading-wrapper">
-                        <h1 className="login__heading-1">RSS Application Login Page</h1>
-                        <h2 className="login__heading-2">Login or register from here to access.</h2>
+            <section className="container-fluid login">
+                <div className="row h-100">
+                    <div className="col-md-6 col-sm-12 login__main-heading-container">
+                        <div className="mx-auto login__heading-wrapper">
+                            <h1 className="login__heading-1">RSS Application Login Page</h1>
+                            <h2 className="login__heading-2">Login or register from here to access.</h2>
+                        </div>
                     </div>
-                </div>
-                <div className="col-md-6 col-sm-12 login__main-form-container">
-                    <div className="login__form-wrapper">
-                        <FormComponent
-                            handleSubmit={this.handleSubmit}
-                            handleChange={this.handleChange}
-                            formType={this.state.form_type} 
-                        />
-                        <div className="text-center login__form-toggle">
-                            <button class="btn btn-link" onClick={this.renderFormType}>{this.state.form_route}</button>
-                        </div> 
+                    <div className="col-md-6 col-sm-12 login__main-form-container">
+                        <div className="login__form-wrapper">
+                            <FormComponent
+                                handleSubmit={this.handleSubmit}
+                                handleChange={this.handleChange}
+                                formType={this.state.form_type} 
+                            />
+                            <div className="text-center login__form-toggle">
+                                <button class="btn btn-link" onClick={this.renderFormType}>{this.state.form_route}</button>
+                            </div> 
+                        </div>
                     </div>
                 </div>
             </section>

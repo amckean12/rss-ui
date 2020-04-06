@@ -28,7 +28,7 @@ class App extends Component {
 
   render(){
     return (
-      <div className="container-fluid App">
+      <div className="App">
           <BrowserRouter>
             <Switch>
               <Route exact path='/'

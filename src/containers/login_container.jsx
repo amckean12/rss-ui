@@ -11,10 +11,38 @@ class LoginContainer extends Component {
         super(props);
         this.state = {
             form_type: "Login",
-            form_route: "New User?"
+            form_route: "New User?",
+            login_credentials: {
+                auth: {
+                    email: "",
+                    password: "",
+                }
+            }
         };
         this.renderFormType = this.renderFormType.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleLogin = this.handleLogin.bind(this)
     }
+
+    handleSubmit(event){
+        event.preventDefault()
+
+        if(this.state.form_type === "Login"){
+            this.handleLogin()
+        }
+    }
+
+    handleLogin(){
+        this.setState({
+            login_credentials: {
+                auth: {
+                    email: document.getElementById("emailInput").value,
+                    password: document.getElementById("passwordInput").value
+                }
+            }
+        })
+    }
+
 
     renderFormType(){
         let form_type = ""
@@ -42,6 +70,8 @@ class LoginContainer extends Component {
                 </div>
                 <div className="col-md-6 col-sm-12 login__main-form-container">
                     <FormComponent
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleChange}
                         formType={this.state.form_type} 
                     />
                     <button class="btn btn-link" onClick={this.renderFormType}>{this.state.form_route}</button> 

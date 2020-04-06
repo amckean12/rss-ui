@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 //Components
 import FormComponent from '../components/form_component.jsx'
@@ -11,10 +12,62 @@ class LoginContainer extends Component {
         super(props);
         this.state = {
             form_type: "Login",
-            form_route: "New User?"
+            form_route: "New User?",
+            username: '',
+            password: '',
+            password_confirmation: ''
         };
         this.renderFormType = this.renderFormType.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
+
+    handleChange(event){
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+
+        if(this.state.form_type === "Login"){
+            this.handleLogin()
+        } else {
+            this.handleSignup()
+        }
+    }
+
+    handleLogin = () => {
+        axios.get('http://localhost:3001/find_user', {
+            params: {
+                password: this.state.password,
+                username: this.state.username
+            }
+        })
+        .then(response => {
+            this.props.handleLogin(response.data)
+            localStorage.setItem('username', response.data.user_data.username);
+            this.handleRedirect()
+        })
+    }
+
+    handleSignup(){
+        axios.post('http://localhost:3001/new_user', {
+            user: {
+                password: this.state.password,
+                password_confirmation: this.state.password_confirmation,
+                username: this.state.username
+            }
+        })
+        .then(function(response){
+            
+        })
+    }
+
+    handleRedirect(){
+        this.props.history.push('/profile')
+    }
+
 
     renderFormType(){
         let form_type = ""
@@ -42,6 +95,8 @@ class LoginContainer extends Component {
                 </div>
                 <div className="col-md-6 col-sm-12 login__main-form-container">
                     <FormComponent
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleChange}
                         formType={this.state.form_type} 
                     />
                     <button class="btn btn-link" onClick={this.renderFormType}>{this.state.form_route}</button> 

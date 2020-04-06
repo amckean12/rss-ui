@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 
 //Container
-import LoginContainer from './login_container.jsx'
-import ProfileContainer from './profile_container.jsx'
+import ProfileContainer from './profile_container.jsx';
+
+//Components
+import HeaderComponent from '../components/header_component.jsx';
 
 class MainContainer extends Component {
     render(){
         return(
-            <main className="main container-fluid">
-                <LoginContainer />
-            </main>
+            <div className="container-fluid">
+                <HeaderComponent 
+                    user={this.props.data.user}
+                />
+                <ProfileContainer
+                    data={this.props.data} 
+                />
+            </div>
         );
     }
 }

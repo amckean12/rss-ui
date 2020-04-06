@@ -14,53 +14,17 @@ class ProfileContainer extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            user: "",
-            article_count: "",
-            article_count_img: "",
-            oldest_article: "",
-            newest_article: "",
-            article_history: [
-                {
-                    id: 1,
-                    title: "This is Article",
-                    article_link: "https://www.google.com/",
-                    published_date: "2020-03-30T16:10:00.000Z",
-                    description: "sed do eiusmod tempor incididunt",
-                    image: true,
-                    img_src: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iUqQrbWEDNrc/v0/800x600.jpg",
-                    img_alt: "Health Image", 
-                    display_date: '',
-                }
-            ]
+            user: this.props.user,
+            article_count: this.props.article_count,
+            article_count_img: this.props.article_count_img,
+            oldest_article: this.props.oldest_article,
+            newest_article: this.props.newest_article,
+            article_history: this.props.article_history,
         };
     }
 
-    componentDidMount() {
-        fetch("http://localhost:3001/users/1")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        user: result.user_data,
-                        article_count: result.article_count,
-                        article_count_img: result.article_count_img,
-                        oldest_article: result.oldest_article,
-                        newest_article: result.newest_article,
-                        article_history: result.article_history,
-                    });
-                },
-            (error) => {
-                this.setState({
-                    isLoaded: true,
-                    error
-                });
-            }
-        )
-    }
-
     renderStories() {
-        return this.state.article_history.map( story => {
+        return this.props.data.article_history.map( story => {
             return(<StoryComponent block="profile" story={story}/>)
         })
     }
@@ -69,19 +33,19 @@ class ProfileContainer extends Component {
     sortStoriesArray(order_type){
         let sorted_stories = ""
         if(order_type === 'date'){
-            sorted_stories = this.state.article_history.sort((a, b) => {
+            sorted_stories = this.props.data.article_history.sort((a, b) => {
                 if(a.display_date < b.display_date) { return -1; }
                 if(a.display_date > b.display_date) { return 1; }
                 return 0;
             })
         } else if (order_type === 'title') {
-            sorted_stories = this.state.article_history.sort((a, b) => {
+            sorted_stories = this.props.data.article_history.sort((a, b) => {
                     if(a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
                     if(a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
                     return 0;
                 })
         } else if (order_type === 'description') {
-            sorted_stories = this.state.article_history.sort((a, b) => {
+            sorted_stories = this.props.data.article_history.sort((a, b) => {
                 if(a.description.toLowerCase() < b.description.toLowerCase()) { return -1; }
                 if(a.description.toLowerCase() > b.description.toLowerCase()) { return 1; }
                 return 0;
@@ -103,22 +67,22 @@ class ProfileContainer extends Component {
                                 element={'article-count'}
                                 title={'Total Articles'}
                                 modifier={'orange'}
-                                content={this.state.article_count} />
+                                content={this.props.data.article_count} />
                             <OverviewStatComponent 
                                 element={'article-count'}
                                 title={'Total Articles Img'}
                                 modifier={'light-blue'}
-                                content={this.state.article_count_img} />
+                                content={this.props.data.article_count_img} />
                             <OverviewStatComponent 
                                 element={'article-count'}
                                 title={'Earliest Published Date'}
                                 modifier={'aqua'}
-                                content={this.state.oldest_article.display_date} />
+                                content={this.props.data.oldest_article.display_date} />
                             <OverviewStatComponent 
                                 element={'article-count'}
                                 title={'Latest Published Date'}
                                 modifier={'dark-blue'}
-                                content={this.state.newest_article.display_date} />
+                                content={this.props.data.newest_article.display_date} />
                         </div>
                         <div className="col-md-9 col-sm-12 profile__rss-feed-container">
                             <div className="profile__rss-feed">

@@ -3,7 +3,7 @@ import React from 'react';
 
 const HeaderComponent = (props) => {
     return(
-        <header className='header-section'>
+        <header className='navbar header-section'>
         </header>
     )
 }

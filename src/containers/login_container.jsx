@@ -18,8 +18,6 @@ class LoginContainer extends Component {
             password_confirmation: ''
         };
         this.renderFormType = this.renderFormType.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleLogin = this.handleLogin.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
 
@@ -29,7 +27,7 @@ class LoginContainer extends Component {
         })
     }
 
-    handleSubmit(event){
+    handleSubmit = (event) => {
         event.preventDefault()
 
         if(this.state.form_type === "Login"){
@@ -39,15 +37,16 @@ class LoginContainer extends Component {
         }
     }
 
-    handleLogin(){
+    handleLogin = () => {
         axios.get('http://localhost:3001/find_user', {
             params: {
                 password: this.state.password,
                 username: this.state.username
             }
         })
-        .then(function(response){
-            console.log(response)
+        .then(response => {
+            this.props.handleLogin(response.data)
+            this.handleRedirect()
         })
     }
 
@@ -60,8 +59,12 @@ class LoginContainer extends Component {
             }
         })
         .then(function(response){
-            console.log(response)
+            
         })
+    }
+
+    handleRedirect(){
+        this.props.history.push('/profile')
     }
 
 

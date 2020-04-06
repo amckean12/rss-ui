@@ -10,16 +10,31 @@ const FormComponent = (props) => {
             <form className="form" onSubmit={props.handleSubmit}>
                 <div class="form-group form__input-group">
                     <label className="form__label">Username</label>
-                     <input id="usernameInput" type="text" class="form-control form__input" placeholder="Username" name="username" onChange={props.handleChange}/>
+                    <input id="usernameInput" 
+                        class="form-control form__input" 
+                        type="text" 
+                        placeholder="Username" 
+                        name="username" 
+                        onChange={props.handleChange} />
                 </div>
                 <div class="form-group form__input-group">
-                     <label className="form__label">Password</label>
-                     <input id="passwordInput" type="password" class="form-control form__input" placeholder="Password" name="password" onChange={props.handleChange}/>
+                    <label className="form__label">Password</label>
+                    <input id="passwordInput"
+                        class="form-control form__input"  
+                        type="password" 
+                        placeholder="Password" 
+                        name="password" 
+                        onChange={props.handleChange}/>
                 </div>
                 {props.formType == 'Sign Up' ? 
                 <div class="form-group form__input-group">
                     <label className="form__label">Password Confirmation</label>
-                    <input id="passwordInputConfirmation" type="password" class="form-control form__input" placeholder="Password" name="password_confirmation" onChange={props.handleChange}/>
+                    <input id="passwordInputConfirmation"
+                        class="form-control form__input" 
+                        type="password"  
+                        placeholder="Password" 
+                        name="password_confirmation" 
+                        onChange={props.handleChange}/>
                 </div> : ""
                 }
                 <button type="submit" class="form__submit-button--primary">{props.formType}</button>

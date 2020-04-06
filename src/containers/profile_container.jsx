@@ -49,22 +49,26 @@ class ProfileContainer extends Component {
             <main className="container profile">
                     <div className="row">
                         <div className="col-md-3 col-sm-12 pr-md-0 profile__overview-container">
-                            <OverviewStatComponent 
+                            <OverviewStatComponent
+                                block={'profile'} 
                                 element={'article-count'}
                                 title={'Total Articles'}
                                 modifier={'orange'}
                                 content={this.props.data.article_count} />
-                            <OverviewStatComponent 
+                            <OverviewStatComponent
+                                block={'profile'}  
                                 element={'article-count'}
                                 title={'Total Articles Img'}
                                 modifier={'light-blue'}
                                 content={this.props.data.article_count_img} />
-                            <OverviewStatComponent 
+                            <OverviewStatComponent
+                                block={'profile'}
                                 element={'article-count'}
                                 title={'Earliest Published Date'}
                                 modifier={'aqua'}
                                 content={this.props.data.oldest_article.display_date} />
-                            <OverviewStatComponent 
+                            <OverviewStatComponent
+                                block={'profile'} 
                                 element={'article-count'}
                                 title={'Latest Published Date'}
                                 modifier={'dark-blue'}

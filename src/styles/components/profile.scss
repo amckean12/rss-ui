@@ -1,5 +1,7 @@
+@import '../utils/fonts.scss';
+
 .profile {
-    &__overview-stat {
+    &__overview-stat-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -8,30 +10,30 @@
         margin: 1rem 0rem;
         background-color: white;
 
-        &-heading {
-            font-size: 1.0rem;
+        &--orange {
+            color: #EA6A47;
         }
-        &-value {
-
-            &--orange {
-                font-size: 2rem;
-                color: #EA6A47;
-            }
-
-            &--dark-blue {
-                color: #1C4E80;
-            }
-
-            &--aqua {
-                color: #A5D8DD;
-            }
-
-            &--light-blue {
-                font-size: 2rem;
-                color: #0091D5;
-            }
+        &--light-blue {
+            color: #0091D5;
+        }
+        &--aqua {
+            color: #A5D8DD;
+        }
+        &--dark-blue {
+            color: #1C4E80;
         }
     }
+
+    &__overview-stat-heading {
+        @include font-heading-2;
+    }
+
+    &__overview-stat-value {
+        @include font-heading-3;
+    }
+
+
+
 
     &__story-img {
         padding-bottom: 1rem;
@@ -44,7 +46,6 @@
     &__rss-feed {
         overflow: scroll;
         background-color: white;
-        //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     &__rss-feed-toolbar {
         display: flex;

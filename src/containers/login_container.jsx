@@ -1,7 +1,8 @@
+// Libraries
 import React, { Component } from 'react';
 import axios from 'axios';
 
-//Components
+// Components
 import FormComponent from '../components/form_component.jsx'
 
 // StyleSheets
@@ -17,11 +18,25 @@ class LoginContainer extends Component {
             password: '',
             password_confirmation: ''
         };
-        this.renderFormType = this.renderFormType.bind(this)
-        this.handleChange = this.handleChange.bind(this)
     }
 
-    handleChange(event){
+    renderFormType = () => {
+        let form_type = ""
+        let form_route = ""
+        if (this.state.form_type === "Login") {
+            form_type = "Sign Up"
+            form_route = "Login"
+        } else {
+            form_type = "Login"
+            form_route = "New User?"
+        }
+        this.setState({
+            form_type: form_type,
+            form_route: form_route
+        })
+    }
+
+    handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -45,13 +60,14 @@ class LoginContainer extends Component {
             }
         })
         .then(response => {
-            this.props.handleLogin(response.data)
+            this.props.handleLogin(response.data);
             localStorage.setItem('username', response.data.user_data.username);
-            this.handleRedirect()
+            this.handleRedirect();
         })
+        .catch()
     }
 
-    handleSignup(){
+    handleSignup = () => {
         axios.post('http://localhost:3001/new_user', {
             user: {
                 password: this.state.password,
@@ -59,47 +75,40 @@ class LoginContainer extends Component {
                 username: this.state.username
             }
         })
-        .then(function(response){
-            
+        .then(response => {
+            this.props.handleLogin(response.data);
+            localStorage.setItem('username', response.data.user.username);
+            this.handleRedirect();
         })
+        .catch()
     }
 
-    handleRedirect(){
+    handleRedirect =() => {
         this.props.history.push('/profile')
     }
 
-
-    renderFormType(){
-        let form_type = ""
-        let form_route = ""
-        if(this.state.form_type === "Login"){
-            form_type = "Sign Up"
-            form_route = "Login"
-        } else {
-            form_type = "Login"
-            form_route = "New User?"
-        }
-        this.setState({
-            form_type: form_type,
-            form_route: form_route
-        })
-    }
     render(){
         return(
-            <section className="login row">
-                <div className="col-md-6 col-sm-12 login__main-heading-container">
-                    <div className="mx-auto login__main-heading">
-                        <h1 className="login__heading-1">RSS Application Login Page</h1>
-                        <h2 className="login__heading-2">Login or register from here to access.</h2>
+            <section className="container-fluid login">
+                <div className="row h-100">
+                    <div className="col-md-6 col-sm-12 login__main-heading-container">
+                        <div className="mx-auto login__heading-wrapper">
+                            <h1 className="login__heading-1">RSS Application Login Page</h1>
+                            <h2 className="login__heading-2">Login or register from here to access.</h2>
+                        </div>
                     </div>
-                </div>
-                <div className="col-md-6 col-sm-12 login__main-form-container">
-                    <FormComponent
-                        handleSubmit={this.handleSubmit}
-                        handleChange={this.handleChange}
-                        formType={this.state.form_type} 
-                    />
-                    <button class="btn btn-link" onClick={this.renderFormType}>{this.state.form_route}</button> 
+                    <div className="col-md-6 col-sm-12 login__main-form-container">
+                        <div className="login__form-wrapper">
+                            <FormComponent
+                                handleSubmit={this.handleSubmit}
+                                handleChange={this.handleChange}
+                                formType={this.state.form_type} 
+                            />
+                            <div className="text-center login__form-toggle">
+                                <button class="btn btn-link" onClick={this.renderFormType}>{this.state.form_route}</button>
+                            </div> 
+                        </div>
+                    </div>
                 </div>
             </section>
         );

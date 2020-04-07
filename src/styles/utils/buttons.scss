@@ -1,0 +1,17 @@
+// Default styling for button
+
+@mixin primary_button {
+    padding: 0.375rem 0.75rem;
+    display: inline-block;
+    font-weight: 400;
+    color: white;
+    background-color: #5F42B1;
+    border-color: #5F42B1;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    &:hover {
+        color: #5F42B1;
+        background-color: white;
+    }
+}

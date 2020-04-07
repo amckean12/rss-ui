@@ -1,0 +1,9 @@
+@import '../utils/buttons.scss';
+
+.form {
+    &__submit-button{
+        &--primary {
+            @include primary-button;
+        }
+    }
+}

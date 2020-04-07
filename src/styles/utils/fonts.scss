@@ -1,0 +1,19 @@
+// Font properties
+
+@mixin font-heading-1 {
+    font-size: 2.0rem;
+    line-height: 2.5rem;
+}
+@mixin font-heading-2 {
+    font-size: 1rem;
+}
+@mixin dashboard-font-heading-1 {
+    font-size: 1.25rem;
+}
+@mixin dashboard-font-heading-2 {
+    font-size: 1.125rem;
+}
+@mixin dashboard-font-heading-3 {
+    font-size: 1.0rem;
+}
+

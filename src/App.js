@@ -9,7 +9,6 @@ import MainContainer from './containers/main_container.jsx';
 
 // Style Sheets
 import './app.scss'
-import './styles/utils/responsiveness.scss'
 
 class App extends Component {
   constructor(props) {

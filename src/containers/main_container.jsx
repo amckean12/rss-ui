@@ -51,11 +51,18 @@ class MainContainer extends Component {
             });
         })
     }
+    
+    handleLogout = () => {
+        localStorage.removeItem('username');
+        this.props.history.push('/')
+    }
+
     render(){
         return(
             <div className="home">
                 <HeaderComponent 
                     user={this.state.user}
+                    handleLogout={this.handleLogout}
                 />
                 <ProfileContainer
                     data={this.state} 

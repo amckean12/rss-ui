@@ -1,3 +1,5 @@
+@import '../utils/buttons.scss';
+
 .header {
     background-color: #5F42B1;
     height: 3.5rem;
@@ -11,5 +13,17 @@
     }
     &__logo-content {
         padding: 7px;
+    }
+
+    &__user {
+        display: flex;
+    }
+    &__user-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    &__user-logout-button {
+        @include primary_button;
     }
 }

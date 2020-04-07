@@ -64,9 +64,10 @@ class LoginContainer extends Component {
             localStorage.setItem('username', response.data.user_data.username);
             this.handleRedirect();
         })
+        .catch()
     }
 
-    handleSignup(){
+    handleSignup = () => {
         axios.post('http://localhost:3001/new_user', {
             user: {
                 password: this.state.password,
@@ -76,12 +77,13 @@ class LoginContainer extends Component {
         })
         .then(response => {
             this.props.handleLogin(response.data);
-            localStorage.setItem('username', response.data.user_data.username);
+            localStorage.setItem('username', response.data.user.username);
             this.handleRedirect();
         })
+        .catch()
     }
 
-    handleRedirect(){
+    handleRedirect =() => {
         this.props.history.push('/profile')
     }
 

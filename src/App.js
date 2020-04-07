@@ -6,6 +6,9 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import LoginContainer from './containers/login_container.jsx';
 import MainContainer from './containers/main_container.jsx';
 
+// Components
+import ErrorComponent from './components/error_component.jsx';
+
 
 // Style Sheets
 import './app.scss'
@@ -15,7 +18,8 @@ class App extends Component {
     super(props);
     this.state = { 
       isLoggedIn: false,
-      user: {}
+      user: {},
+      error_type: '400',
      };
   }
 
@@ -44,6 +48,14 @@ class App extends Component {
                   <MainContainer 
                     {...props} 
                     handleLogin={this.handleLogin} 
+                    loggedInStatus={this.state.isLoggedIn}
+                    data={this.state.user}/>
+                )} />
+              <Route exact path='/error' 
+                render={props => (
+                  <ErrorComponent 
+                    {...props} 
+                    errorState={this.state.error_type}
                     loggedInStatus={this.state.isLoggedIn}
                     data={this.state.user}/>
                 )} />

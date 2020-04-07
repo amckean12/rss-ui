@@ -17,6 +17,7 @@ const HeaderComponent = (props) => {
                     <div className="header__user-wrapper">
                         <span className="header__user-content">{props.user.username}</span>
                     </div>
+                    <button className="header__user-logout-button" onClick={props.handleLogout}>Logout</button>
                 </div> 
             </div>
         </header>

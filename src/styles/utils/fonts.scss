@@ -7,15 +7,13 @@
 @mixin font-heading-2 {
     font-size: 1rem;
 }
-@mixin font-heading-3 {
-    font-size: 1.5rem;
+@mixin dashboard-font-heading-1 {
+    font-size: 1.25rem;
 }
-@mixin font-heading-4 {
-    
+@mixin dashboard-font-heading-2 {
+    font-size: 1.125rem;
 }
-@mixin font-heading-5 {
-    
+@mixin dashboard-font-heading-3 {
+    font-size: 1.0rem;
 }
-@mixin font-heading-6 {
-    
-}
+

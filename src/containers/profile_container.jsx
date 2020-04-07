@@ -75,23 +75,21 @@ class ProfileContainer extends Component {
                                 content={this.props.data.newest_article.display_date} />
                         </div>
                         <div className="col-md-9 col-sm-12 profile__rss-feed-container">
-                            <div className="profile__rss-feed">
-                                <div className="profile__rss-feed-toolbar">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle profile__rss-toolbar-sort-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('title')}>Title</button>
-                                            <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('date')}>Published Date</button>
-                                            <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('description')}>Description</button>
-                                        </div>
+                            <div className="profile__rss-feed-toolbar">
+                                <div class="btn-group">
+                                    <button type="button" class="btn dropdown-toggle profile__rss-toolbar-sort-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('title')}>Title</button>
+                                        <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('date')}>Published Date</button>
+                                        <button class="dropdown-item" type="button" onClick={() => this.sortStoriesArray('description')}>Description</button>
                                     </div>
                                 </div>
-                                <div className="profile__rss-feed-list">
-                                    { this.renderStories() }
-                                </div>
-                            </div> 
-                        </div>  
-                    </div>
+                            </div>
+                            <div className="profile__rss-feed-list">
+                                { this.renderStories() }
+                            </div>
+                        </div> 
+                    </div>  
             </main>
         );
     }

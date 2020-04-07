@@ -60,9 +60,9 @@ class LoginContainer extends Component {
             }
         })
         .then(response => {
-            this.props.handleLogin(response.data)
+            this.props.handleLogin(response.data);
             localStorage.setItem('username', response.data.user_data.username);
-            this.handleRedirect()
+            this.handleRedirect();
         })
     }
 
@@ -74,8 +74,10 @@ class LoginContainer extends Component {
                 username: this.state.username
             }
         })
-        .then(function(response){
-            
+        .then(response => {
+            this.props.handleLogin(response.data);
+            localStorage.setItem('username', response.data.user_data.username);
+            this.handleRedirect();
         })
     }
 
